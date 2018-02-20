@@ -12,6 +12,11 @@ airflow_required_libs:
 airflow_user: airflow
 airflow_group: airflow
 
+# Pyenv
+airflow_pip_executable: pip
+airflow_executable: /usr/local/bin/airflow
+airflow_service_executable_command: "{{ airflow_executable }}"
+
 ## Service options
 
 airflow_scheduler_runs: 5

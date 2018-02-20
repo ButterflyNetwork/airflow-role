@@ -35,12 +35,14 @@
   pip:
     name: celery
     version: "{{ celery_version }}"
+    executable: "{{ airflow_pip_executable }}"
   when: airflow_executor == "CeleryExecutor"
 
 - name: Airflow | Installing extra Celery packages
   pip:
     name: celery[{{ item }}]
     version: "{{ celery_version }}"
+    executable: "{{ airflow_pip_executable }}"
   with_items: "{{ celery_extra_packages }}"
   when: airflow_executor == "CeleryExecutor" and celery_extra_packages
 
@@ -54,12 +56,14 @@
     name: apache-airflow
     version: "{{ airflow_version }}"
     extra_args: --no-cache-dir
+    executable: "{{ airflow_pip_executable }}"
   register: airflow_install
 
 - name: Airflow | Installing Airflow Extra Packages
   pip:
     name: apache-airflow[{{ item }}]
     version: "{{ airflow_version }}"
+    executable: "{{ airflow_pip_executable }}"
   with_items: "{{ airflow_extra_packages }}"
   when: airflow_extra_packages
 
@@ -67,6 +71,7 @@
   pip:
     name: "{{ item.name }}"
     version: "{{ item.version }}"
+    executable: "{{ airflow_pip_executable }}"
   with_items: "{{ dags_dependencies }}"
   when: dags_dependencies
   notify:

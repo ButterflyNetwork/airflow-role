@@ -18,7 +18,7 @@ group:
     exists: true
 
 command:
-  /usr/local/bin/airflow version:
+  "{{ airflow_executable }} version":
     exit-status: 0
     stdout:
       - "{{ airflow_version }}"
