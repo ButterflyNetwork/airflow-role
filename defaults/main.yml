@@ -1,6 +1,8 @@
 ---
 
 ## General
+apache_airflow_package_name: apache-airflow
+apache_airflow_package_editable: False
 airflow_version: 1.8.1
 airflow_extra_packages:
 
